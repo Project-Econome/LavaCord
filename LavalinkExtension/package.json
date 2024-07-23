@@ -1,0 +1,20 @@
+{
+  "name": "lavacord",
+  "description": "An extension for managing audio playback using Lavalink.",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Project-Econome",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "lavacord": "^3.2.0",
+    "@tryforge/forgescript": "^1.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "@types/node": "^20.14.0"
+  }
+}
