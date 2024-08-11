@@ -1,0 +1,39 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const forgescript_1 = require("@tryforge/forgescript");
+const __1 = require("..");
+exports.default = new forgescript_1.NativeFunction({
+    name: "$volume",
+    description: "Sets the volume of the current track.",
+    brackets: true,
+    unwrap: true,
+    args: [
+        {
+            name: "guild",
+            description: "The guild to set volume for.",
+            rest: false,
+            type: forgescript_1.ArgType.Guild,
+            required: true
+        },
+        {
+            name: "volume",
+            description: "The volume to set (0-100).",
+            rest: false,
+            type: forgescript_1.ArgType.Number,
+            required: true
+        }
+    ],
+    async execute(ctx, [guild, volume]) {
+        const player = __1.LavaForge.Instance.manager.players.get(guild.id);
+        if (!player)
+            return this.customError("No player found for this guild.");
+        try {
+            await player.setVolume(volume);
+            return this.success();
+        }
+        catch (error) {
+            return this.customError("Failed to set volume.");
+        }
+    }
+});
+//# sourceMappingURL=lavalinkVolume.js.map
